@@ -1,0 +1,6 @@
+<resources>
+    <style name="MySlimOutlinedTextField" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeWidth">@dimen/mtrl_textinput_box_stroke_width_default</item>
+        <item name="boxStrokeWidthFocused">@dimen/mtrl_textinput_box_stroke_width_focused</item>
+    </style>
+</resources>
