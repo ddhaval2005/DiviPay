@@ -22,14 +22,14 @@ class LoginActivity : AppCompatActivity() {
             insets
         }
 
-        // Find the LinearLayout by its IDsssssss
-
+        // Find the LinearLayout by its ID
         val loginButtonLayout: LinearLayout = findViewById(R.id.btnLoginLayout)
         loginButtonLayout.setOnClickListener {
             // Use this Intent to launch the MainDashboard activity
             val i = Intent(this, MainDashboard::class.java)
             startActivity(i)
             finish()
+            //1st
         }
     }
 }
