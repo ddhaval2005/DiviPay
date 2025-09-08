@@ -11,7 +11,7 @@
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="?attr/actionBarSize"
-        android:background="#0000ff"
+        android:background="@drawable/blue_gradient_background"
         android:elevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,7 +28,7 @@
             android:layout_marginEnd="16dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Menu"
-            android:src="@drawable/ic_profile_placeholder"
+            android:src="@drawable/blue_gradient_background"
             app:tint="@android:color/white" />
     </androidx.appcompat.widget.Toolbar>
 
