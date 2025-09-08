@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="12dp"
+    android:gravity="center_vertical"
+    android:background="@drawable/rounded_edittext_bg"
+    android:layout_marginBottom="8dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/ivMemberAvatar"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/ic_profile_placeholder"
+        app:civ_border_width="2dp"
+        app:civ_border_color="@color/colorPrimary" />
+
+    <TextView
+        android:id="@+id/tvMemberName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_weight="1"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        tools:text="Member Name" />
+
+    <ImageButton
+        android:id="@+id/btnDeleteMember"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_delete"
+        android:contentDescription="Delete Member"
+        app:tint="@android:color/holo_red_dark" />
+
+</LinearLayout>

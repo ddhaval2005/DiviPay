@@ -1,128 +1,110 @@
 package com.example.divipay
 
+import android.content.Context
 import android.os.Bundle
-import android.view.View
-import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.LinearLayout // Import LinearLayout
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import de.hdodenhof.circleimageview.CircleImageView
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import java.text.SimpleDateFormat
+import java.util.*
+
+// Data class to represent an expense. This should be placed outside of any Activity class.
+data class Expense(
+    val title: String,
+    val amount: Double,
+    val category: String,
+    val date: String,
+    val time: String,
+    val paidBy: String,
+    val groupId: String?
+)
 
 class AddExpenseActivity : AppCompatActivity() {
 
-    private lateinit var etDescription: EditText
-    private lateinit var actCategory: AutoCompleteTextView
-    private lateinit var etPrice: EditText
-    private lateinit var actPaidBy: AutoCompleteTextView
-    private lateinit var btnSplitEqually: Button
-    private lateinit var btnSplitUnequally: Button
-    private lateinit var btnSplitItemWise: Button
-    private lateinit var btnAddBillImage: Button
-    private lateinit var btnAddMoreBills: Button
-    private lateinit var btnSubmitExpense: LinearLayout // Corrected type to LinearLayout
-    private lateinit var btnAddFriends: ImageButton
-    private lateinit var ivYouAvatar: de.hdodenhof.circleimageview.CircleImageView
-
-    private val categories = arrayOf("Food", "Travel", "Utilities", "Rent", "Shopping", "Misc.")
-    private val paidByOptions = arrayOf("You", "Friend 1", "Friend 2") // Dynamically populate with actual members
+    private lateinit var etExpenseTitle: EditText
+    private lateinit var etExpenseAmount: EditText
+    private lateinit var etPaidBy: EditText // Changed back to EditText
+    private lateinit var etCategory: EditText
+    private lateinit var btnAddExpense: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_expense)
 
-        // Initialize Toolbar
+        // Set up the Toolbar
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "Add Expense"
 
         // Initialize UI elements
-        etDescription = findViewById(R.id.etDescription)
-        actCategory = findViewById(R.id.actCategory)
-        etPrice = findViewById(R.id.etPrice)
-        actPaidBy = findViewById(R.id.actPaidBy)
-        btnSplitEqually = findViewById(R.id.btnSplitEqually)
-        btnSplitUnequally = findViewById(R.id.btnSplitUnequally)
-        btnSplitItemWise = findViewById(R.id.btnSplitItemWise)
-        btnAddBillImage = findViewById(R.id.btnAddBillImage)
-        btnAddMoreBills = findViewById(R.id.btnAddMoreBills)
-        btnSubmitExpense = findViewById(R.id.btnSubmitExpenseLayout) // Corrected ID
-        btnAddFriends = findViewById(R.id.btnAddFriends)
-        ivYouAvatar = findViewById(R.id.ivYouAvatar)
+        etExpenseTitle = findViewById(R.id.etExpenseTitle)
+        etExpenseAmount = findViewById(R.id.etExpenseAmount)
+        etPaidBy = findViewById(R.id.etPaidBy) // New reference for EditText
+        etCategory = findViewById(R.id.etCategory)
+        btnAddExpense = findViewById(R.id.btnAddExpense)
 
-        // Set up Category Dropdown
-        val categoryAdapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, categories)
-        actCategory.setAdapter(categoryAdapter)
+        // Set up button click listener
+        btnAddExpense.setOnClickListener {
+            val expenseTitle = etExpenseTitle.text.toString().trim()
+            val expenseAmountStr = etExpenseAmount.text.toString().trim()
+            val paidBy = etPaidBy.text.toString().trim() // Get text from EditText
+            val category = etCategory.text.toString().trim()
 
-        // Set up Paid By Dropdown
-        val paidByAdapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, paidByOptions)
-        actPaidBy.setAdapter(paidByAdapter)
+            if (expenseTitle.isEmpty() || expenseAmountStr.isEmpty() || paidBy.isEmpty() || category.isEmpty()) {
+                Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
 
-        // Set up listeners
-        btnAddFriends.setOnClickListener {
-            Toast.makeText(this, "Add Friends clicked", Toast.LENGTH_SHORT).show()
-        }
+            val expenseAmount = expenseAmountStr.toDoubleOrNull()
+            if (expenseAmount == null) {
+                Toast.makeText(this, "Invalid amount entered", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
 
-        btnSplitEqually.setOnClickListener {
-            Toast.makeText(this, "Split Equally selected", Toast.LENGTH_SHORT).show()
-        }
-        btnSplitUnequally.setOnClickListener {
-            Toast.makeText(this, "Split Unequally selected", Toast.LENGTH_SHORT).show()
-        }
-        btnSplitItemWise.setOnClickListener {
-            Toast.makeText(this, "Split Item Wise selected", Toast.LENGTH_SHORT).show()
-        }
+            // Get current date and time
+            val currentDate = SimpleDateFormat("EEEE, d MMMM", Locale.getDefault()).format(Date())
+            val currentTime = SimpleDateFormat("HH:mm", Locale.getDefault()).format(Date())
 
-        btnAddBillImage.setOnClickListener {
-            Toast.makeText(this, "Add Bill Image clicked", Toast.LENGTH_SHORT).show()
-        }
+            // Create an Expense object and save it
+            val newExpense = Expense(
+                title = expenseTitle,
+                amount = expenseAmount,
+                category = category,
+                date = currentDate,
+                time = currentTime,
+                paidBy = paidBy,
+                groupId = null
+            )
+            saveExpense(newExpense)
 
-        btnAddMoreBills.setOnClickListener {
-            Toast.makeText(this, "Add More Bills clicked", Toast.LENGTH_SHORT).show()
-        }
+            Toast.makeText(this, "Expense added successfully!", Toast.LENGTH_SHORT).show()
 
-        // The listener is now on the LinearLayout
-        btnSubmitExpense.setOnClickListener {
-            validateAndSubmitExpense()
+            // Close the activity and return to the expense list
+            finish()
         }
     }
 
-    private fun validateAndSubmitExpense() {
-        val description = etDescription.text.toString().trim()
-        val priceStr = etPrice.text.toString().trim()
-        val category = actCategory.text.toString().trim()
-        val paidBy = actPaidBy.text.toString().trim()
-
-        if (description.isEmpty()) {
-            etDescription.error = "Description is required"
-            return
-        }
-        if (priceStr.isEmpty()) {
-            etPrice.error = "Price is required"
-            return
-        }
-        val price = priceStr.toDoubleOrNull()
-        if (price == null || price <= 0) {
-            etPrice.error = "Enter a valid price"
-            return
-        }
-        if (category.isEmpty()) {
-            actCategory.error = "Category is required"
-            return
-        }
-        if (paidBy.isEmpty()) {
-            actPaidBy.error = "Paid By is required"
-            return
+    private fun saveExpense(expense: Expense) {
+        val sharedPref = getSharedPreferences("DiviPayExpenses", Context.MODE_PRIVATE)
+        val gson = Gson()
+        val existingExpensesJson = sharedPref.getString("expensesList", null)
+        val type = object : TypeToken<ArrayList<Expense>>() {}.type
+        val expensesList: ArrayList<Expense> = if (existingExpensesJson != null) {
+            gson.fromJson(existingExpensesJson, type)
+        } else {
+            ArrayList()
         }
 
-        Toast.makeText(this, "Expense submitted: $description, ₹$price, Category: $category, Paid by: $paidBy", Toast.LENGTH_LONG).show()
-        finish()
+        //change1
+        expensesList.add(expense)
+        val updatedExpensesJson = gson.toJson(expensesList)
+        with(sharedPref.edit()) {
+            putString("expensesList", updatedExpensesJson)
+            apply()
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SettingsMenuItem">
+        <attr name="text_title" format="string" />
+        <attr name="icon_src" format="reference" />
+        <attr name="text_color" format="color" />
+        <attr name="icon_color" format="color" />
+    </declare-styleable>
+</resources>

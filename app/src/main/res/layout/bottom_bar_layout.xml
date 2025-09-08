@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/blue_gradient_background"
+    android:elevation="8dp"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingTop="15dp"
+    android:paddingBottom="15dp"
+    android:weightSum="5">
+
+    <ImageButton
+        android:id="@+id/icon_home"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:layout_weight="1"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:contentDescription="Home"
+        android:focusable="true"
+        android:src="@drawable/home"
+        app:tint="@color/drawer_divider" />
+
+    <ImageButton
+        android:id="@+id/icon_groups"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:layout_weight="1"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:contentDescription="Groups"
+        android:focusable="true"
+        android:src="@drawable/groups"
+        app:tint="@color/drawer_icon_tint" />
+
+    <ImageButton
+        android:id="@+id/icon_add_user"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:layout_weight="1"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:contentDescription="Add User"
+        android:focusable="true"
+        android:src="@drawable/user"
+        app:tint="@android:color/white" />
+
+    <ImageButton
+        android:id="@+id/icon_list"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:layout_weight="1"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:contentDescription="List"
+        android:focusable="true"
+        android:src="@drawable/list"
+        app:tint="@android:color/white" />
+
+    <ImageButton
+        android:id="@+id/icon_chart"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:layout_weight="1"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:contentDescription="Chart"
+        android:focusable="true"
+        android:src="@drawable/chart"
+        app:tint="@android:color/white" />
+</LinearLayout>

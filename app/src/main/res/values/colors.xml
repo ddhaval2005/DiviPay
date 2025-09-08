@@ -14,4 +14,7 @@
     <color name="menu_item_icon_color">@android:color/white</color>
     <color name="menu_item_text_color">@android:color/white</color>
     <color name="header_background">#0000ff</color>
+    <color name="colorPrimary">#0000ff</color>
+    <color name="logout_red">#F44336</color>
+    <color name="light_grey">#D3D3D3</color>
 </resources>

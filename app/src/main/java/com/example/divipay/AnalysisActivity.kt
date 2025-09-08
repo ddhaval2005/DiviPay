@@ -19,6 +19,8 @@ import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
+import android.widget.Button
+
 
 class AnalysisActivity : AppCompatActivity() {
 
@@ -52,6 +54,22 @@ class AnalysisActivity : AppCompatActivity() {
 
         val adapter = ExpenseCategoryAdapter(expenseCategories)
         recyclerView.adapter = adapter
+
+        // --- Button Click Listeners ---
+        val btnDay: Button = findViewById(R.id.btnTimeDay)
+        val btnMonth: Button = findViewById(R.id.btnTimeMonth)
+        val btnYear: Button = findViewById(R.id.btnTimeYear)
+
+        btnDay.setOnClickListener {
+            Toast.makeText(this, "Day button clicked!", Toast.LENGTH_SHORT).show()
+        }
+        btnMonth.setOnClickListener {
+            Toast.makeText(this, "Month button clicked!", Toast.LENGTH_SHORT).show()
+        }
+        btnYear.setOnClickListener {
+            Toast.makeText(this, "Year button clicked!", Toast.LENGTH_SHORT).show()
+        }
+        // --- End of button click listeners ---
 
         // --- Bottom Bar Listeners ---
         setupBottomBarListeners()

@@ -33,6 +33,31 @@
         tools:itemCount="5"
         tools:listitem="@layout/item_expense" />
 
+    <TextView
+        android:id="@+id/tvNoExpenses"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No expenses found."
+        android:textSize="18sp"
+        android:textColor="@android:color/darker_gray"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="@id/rvExpenses"
+        app:layout_constraintBottom_toBottomOf="@id/rvExpenses"
+        app:layout_constraintStart_toStartOf="@id/rvExpenses"
+        app:layout_constraintEnd_toEndOf="@id/rvExpenses"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAddExpense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:src="@drawable/add"
+        app:backgroundTint="#0000ff"
+        app:tint="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@id/bottom_bar_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="Add Expense"/>
+
     <LinearLayout
         android:id="@+id/bottom_bar_layout"
         android:layout_width="match_parent"

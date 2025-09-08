@@ -27,6 +27,18 @@
             android:exported="true" />
 
         <activity
+            android:name=".SettingsActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".UserInfoActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".SignUpActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".LoginActivity"
             android:exported="false" />
 
@@ -34,9 +46,7 @@
             android:name=".ProfileSetupActivity"
             android:exported="false" />
 
-        <activity
-            android:name=".AddExpenseActivity"
-            android:exported="false" />
+
 
         <activity
             android:name=".AnalysisActivity"
@@ -45,8 +55,15 @@
             android:name=".ExpenseListActivity"
             android:exported="false" />
         <activity
+            android:name=".AddExpenseActivity"
+            android:exported="false" />
+        <activity
             android:name=".AddGroupActivity"
             android:exported="false"/>
+
+        <activity
+            android:name=".MyGroupsActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
