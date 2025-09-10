@@ -14,9 +14,11 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.textfield.TextInputLayout
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+
 
 class AddGroupActivity : AppCompatActivity() {
 
@@ -26,6 +28,7 @@ class AddGroupActivity : AppCompatActivity() {
     private lateinit var btnCreateGroup: Button
     private lateinit var btnMyGroups: Button
     private lateinit var llMemberNames: LinearLayout
+    private lateinit var drawerLayout: DrawerLayout
 
     private var currentMemberCount = 0
 
@@ -36,8 +39,8 @@ class AddGroupActivity : AppCompatActivity() {
         // Set up the Toolbar
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = "Add Group"
+        supportActionBar?.setDisplayHomeAsUpEnabled(false) // Disable the back arrow
+        supportActionBar?.setDisplayShowTitleEnabled(false) // Hide the default title
 
         // Initialize UI elements
         etGroupName = findViewById(R.id.etGroupName)
@@ -45,7 +48,7 @@ class AddGroupActivity : AppCompatActivity() {
         etTotalAmount = findViewById(R.id.etTotalAmount)
         btnCreateGroup = findViewById(R.id.btnCreateGroup)
         btnMyGroups = findViewById(R.id.btnMyGroups)
-        llMemberNames = findViewById(R.id.llMemberNames)
+//        llMemberNames = findViewById(R.id.llMemberNames)
 
         // Set up TextWatcher for member count
         etMemberCount.addTextChangedListener(object : TextWatcher {
@@ -176,6 +179,9 @@ class AddGroupActivity : AppCompatActivity() {
             intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
             startActivity(intent)
         }
+
+
+
     }
 
     override fun onSupportNavigateUp(): Boolean {

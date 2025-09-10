@@ -25,7 +25,7 @@ class AddExpenseActivity : AppCompatActivity() {
 
     private lateinit var etExpenseTitle: EditText
     private lateinit var etExpenseAmount: EditText
-    private lateinit var etPaidBy: EditText // Changed back to EditText
+    private lateinit var etPaidBy: EditText
     private lateinit var etCategory: EditText
     private lateinit var btnAddExpense: Button
 
@@ -36,13 +36,13 @@ class AddExpenseActivity : AppCompatActivity() {
         // Set up the Toolbar
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        // Corrected: Removed back button logic from here
         supportActionBar?.title = "Add Expense"
 
         // Initialize UI elements
         etExpenseTitle = findViewById(R.id.etExpenseTitle)
         etExpenseAmount = findViewById(R.id.etExpenseAmount)
-        etPaidBy = findViewById(R.id.etPaidBy) // New reference for EditText
+        etPaidBy = findViewById(R.id.etPaidBy)
         etCategory = findViewById(R.id.etCategory)
         btnAddExpense = findViewById(R.id.btnAddExpense)
 
@@ -50,7 +50,7 @@ class AddExpenseActivity : AppCompatActivity() {
         btnAddExpense.setOnClickListener {
             val expenseTitle = etExpenseTitle.text.toString().trim()
             val expenseAmountStr = etExpenseAmount.text.toString().trim()
-            val paidBy = etPaidBy.text.toString().trim() // Get text from EditText
+            val paidBy = etPaidBy.text.toString().trim()
             val category = etCategory.text.toString().trim()
 
             if (expenseTitle.isEmpty() || expenseAmountStr.isEmpty() || paidBy.isEmpty() || category.isEmpty()) {
@@ -105,10 +105,5 @@ class AddExpenseActivity : AppCompatActivity() {
             putString("expensesList", updatedExpensesJson)
             apply()
         }
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
-        return true
     }
 }

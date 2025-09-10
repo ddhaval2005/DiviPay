@@ -11,7 +11,8 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_marginTop="0dp"
+        android:layout_height="100dp"
         android:background="@drawable/blue_gradient_background"
         android:elevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,10 +20,9 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/ic_arrow_back"
         app:title="Chart"
-        app:titleTextColor="@color/drawer_divider" />
+        app:titleTextColor="@android:color/white" />
 
     <ScrollView
-        android:id="@+id/scrollViewContent"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/bottom_bar_layout"
@@ -84,49 +84,54 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:gravity="center_horizontal"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:weightSum="4">
 
                 <Button
                     android:id="@+id/btnTimeDay"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:backgroundTint="#E0E7FF"
                     android:text="Day"
                     android:textColor="#0000ff"
-                    android:textSize="12sp"
+                    android:textSize="11sp"
                     android:layout_marginEnd="8dp"
                     app:cornerRadius="24dp" />
 
                 <Button
                     android:id="@+id/btnTimeWeek"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:backgroundTint="#0000ff"
                     android:text="Week"
                     android:textColor="@android:color/white"
-                    android:textSize="12sp"
+                    android:textSize="11sp"
                     android:layout_marginEnd="8dp"
                     app:cornerRadius="24dp" />
 
                 <Button
                     android:id="@+id/btnTimeMonth"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:backgroundTint="#E0E7FF"
                     android:text="Month"
                     android:textColor="#0000ff"
-                    android:textSize="12sp"
+                    android:textSize="10sp"
                     android:layout_marginEnd="8dp"
                     app:cornerRadius="24dp" />
 
                 <Button
                     android:id="@+id/btnTimeYear"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:backgroundTint="#E0E7FF"
                     android:text="Year"
                     android:textColor="#0000ff"
-                    android:textSize="12sp"
+                    android:textSize="11sp"
                     app:cornerRadius="24dp" />
             </LinearLayout>
 
@@ -165,7 +170,7 @@
 
     <LinearLayout
         android:id="@+id/bottom_bar_layout"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="0dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/blue_gradient_background"

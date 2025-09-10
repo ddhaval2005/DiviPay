@@ -9,10 +9,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.example.divipay" />
+                  <option name="mobileSdkAppId" value="1:834098902815:android:ff72902bca83d3f34b622a" />
+                  <option name="projectId" value="divipay-6325" />
+                  <option name="projectNumber" value="834098902815" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

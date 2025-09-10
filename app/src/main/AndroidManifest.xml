@@ -46,8 +46,18 @@
             android:name=".ProfileSetupActivity"
             android:exported="false" />
 
-
-
+        <activity
+            android:name=".ContactUsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AboutUsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RateUsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FaqActivity"
+            android:exported="false" />
         <activity
             android:name=".AnalysisActivity"
             android:exported="false" />

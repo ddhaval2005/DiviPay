@@ -2,4 +2,30 @@
     <string name="app_name">DiviPay</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="about_us_content">Your company is the leading mobile payment application that allows users to split bills, track expenses, and manage group finances effortlessly. Our mission is to simplify money management for friends, families, and communities, making it easier than ever to go Dutch. We believe that managing money should not be a hassle, so we\'ve built a platform that\'s intuitive, secure, and fun.\n\nDeveloped with ❤️ in India.</string>
+    <string name="rate_us_title">Rate Us</string>
+    <string name="rate_us_message">If you enjoy using our app, please take a moment to rate us on the Google Play Store. Your feedback helps us improve!</string>
+
+    <string name="faq_title">Frequently Asked Questions</string>
+
+    <string name="faq_q1">What is Divipay?</string>
+    <string name="faq_a1">Divipay is a simple and fast app that helps you split bills and expenses with friends and family. No more complicated math or awkward conversations!</string>
+
+    <string name="faq_q2">How do I create a new group?</string>
+    <string name="faq_a2">From the home screen, tap the "+" button to create a new group. You can then add members and start adding expenses.</string>
+
+    <string name="faq_q3">Can I use Divipay for multiple currencies?</string>
+    <string name="faq_a3">Currently, Divipay supports a single currency per group. You can create a new group for each currency you need.</string>
+
+    <string name="faq_q4">Is my data secure?</string>
+    <string name="faq_a4">Yes, we take your privacy and data security seriously. All your information is encrypted and stored securely.</string>
+
+    <string name="faq_q5">How do I settle a bill?</string>
+    <string name="faq_a5">When a member has paid their share, you can mark the transaction as settled within the group details. The app will keep a record of all settled and outstanding balances.</string>
+    <!-- New strings for logout functionality -->
+    <string name="logout_dialog_title">Confirm Logout</string>
+    <string name="logout_dialog_message">Are you sure you want to log out?</string>
+    <string name="logout_yes">Yes</string>
+    <string name="logout_no">No</string>
+    <string name="logged_out_toast">Logged out successfully!</string>
 </resources>
