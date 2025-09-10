@@ -1,8 +1,6 @@
 plugins {
-//    alias(libs.plugins.android.application)
-    id("com.android.application")
+    alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    id("com.google.gms.google-services")
 }
 
 android {
@@ -52,7 +50,5 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     implementation("com.google.android.material:material:1.x.x")
     implementation("com.google.code.gson:gson:2.10.1")
-    implementation(platform("com.google.firebase:firebase-bom:34.2.0"))
-    implementation("com.google.firebase:firebase-analytics")
 // Use the latest version
 }

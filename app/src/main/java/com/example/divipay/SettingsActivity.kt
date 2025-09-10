@@ -138,7 +138,7 @@ class SettingsActivity : AppCompatActivity() {
 
         setupMenuItem(
             findViewById(R.id.menu_user_info),
-            R.drawable.ic_person, // The icon you need for User Info
+            R.drawable.ic_person,
             "User Info"
         )
         setupMenuItem(
@@ -168,13 +168,16 @@ class SettingsActivity : AppCompatActivity() {
             R.color.logout_red // Use a color resource for better management
         )
 
-        // Set up click listeners
+
         findViewById<LinearLayout>(R.id.menu_user_info).setOnClickListener {
             val intent = Intent(this, UserInfoActivity::class.java)
             startActivity(intent)
         }
+
         findViewById<LinearLayout>(R.id.menu_contact_us).setOnClickListener {
-            Toast.makeText(this, "Contact Us clicked", Toast.LENGTH_SHORT).show()
+            // Updated to navigate to the new ContactUsActivity
+            val intent = Intent(this, ContactUsActivity::class.java)
+            startActivity(intent)
         }
         findViewById<LinearLayout>(R.id.menu_about_us).setOnClickListener {
             Toast.makeText(this, "About Us clicked", Toast.LENGTH_SHORT).show()
