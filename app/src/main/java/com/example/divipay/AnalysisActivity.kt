@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -19,10 +20,21 @@ import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
-import android.widget.Button
 
+// Add all necessary imports for your Activities
+import com.example.divipay.MainDashboard
+import com.example.divipay.AddGroupActivity
+import com.example.divipay.ProfileSetupActivity
+import com.example.divipay.ExpenseListActivity
 
 class AnalysisActivity : AppCompatActivity() {
+
+    private lateinit var btnTimeDay: Button
+    private lateinit var btnTimeWeek: Button
+    private lateinit var btnTimeMonth: Button
+    private lateinit var btnTimeYear: Button
+
+    private var selectedTimeButton: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,17 +68,33 @@ class AnalysisActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
 
         // --- Button Click Listeners ---
-        val btnDay: Button = findViewById(R.id.btnTimeDay)
-        val btnMonth: Button = findViewById(R.id.btnTimeMonth)
-        val btnYear: Button = findViewById(R.id.btnTimeYear)
+        btnTimeDay = findViewById(R.id.btnTimeDay)
+        btnTimeWeek = findViewById(R.id.btnTimeWeek)
+        btnTimeMonth = findViewById(R.id.btnTimeMonth)
+        btnTimeYear = findViewById(R.id.btnTimeYear)
 
-        btnDay.setOnClickListener {
+        // Set the default selected button on initial load
+        selectedTimeButton = btnTimeWeek
+        updateTimeButtonStyles()
+
+        btnTimeDay.setOnClickListener {
+            selectedTimeButton = it as Button
+            updateTimeButtonStyles()
             Toast.makeText(this, "Day button clicked!", Toast.LENGTH_SHORT).show()
         }
-        btnMonth.setOnClickListener {
+        btnTimeWeek.setOnClickListener {
+            selectedTimeButton = it as Button
+            updateTimeButtonStyles()
+            Toast.makeText(this, "Week button clicked!", Toast.LENGTH_SHORT).show()
+        }
+        btnTimeMonth.setOnClickListener {
+            selectedTimeButton = it as Button
+            updateTimeButtonStyles()
             Toast.makeText(this, "Month button clicked!", Toast.LENGTH_SHORT).show()
         }
-        btnYear.setOnClickListener {
+        btnTimeYear.setOnClickListener {
+            selectedTimeButton = it as Button
+            updateTimeButtonStyles()
             Toast.makeText(this, "Year button clicked!", Toast.LENGTH_SHORT).show()
         }
         // --- End of button click listeners ---
@@ -74,6 +102,22 @@ class AnalysisActivity : AppCompatActivity() {
         // --- Bottom Bar Listeners ---
         setupBottomBarListeners()
         // --- End Bottom Bar Listeners ---
+    }
+
+    private fun updateTimeButtonStyles() {
+        val allButtons = listOf(btnTimeDay, btnTimeWeek, btnTimeMonth, btnTimeYear)
+
+        allButtons.forEach { button ->
+            if (button == selectedTimeButton) {
+                // Set the selected style
+                button.setBackgroundColor(Color.parseColor("#0000ff"))
+                button.setTextColor(Color.WHITE)
+            } else {
+                // Set the default style
+                button.setBackgroundColor(Color.parseColor("#E0E7FF"))
+                button.setTextColor(Color.parseColor("#0000ff"))
+            }
+        }
     }
 
     private fun setupBottomBarListeners() {
@@ -101,9 +145,8 @@ class AnalysisActivity : AppCompatActivity() {
         }
 
         findViewById<ImageButton>(R.id.icon_chart).setOnClickListener {
-            val intent = Intent(this, AnalysisActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
-            startActivity(intent)
+            Toast.makeText(this, "You are already on the chart page!", Toast.LENGTH_SHORT)
+                .show()
         }
     }
 

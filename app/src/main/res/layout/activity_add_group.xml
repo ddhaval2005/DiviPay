@@ -11,7 +11,7 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="100dp"
         android:background="@drawable/blue_gradient_background"
         android:elevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -150,7 +150,7 @@
     <LinearLayout
         android:id="@+id/bottom_bar_layout"
         android:layout_width="match_parent"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/blue_gradient_background"
         android:elevation="8dp"

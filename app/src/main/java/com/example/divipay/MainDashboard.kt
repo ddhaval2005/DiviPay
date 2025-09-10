@@ -213,8 +213,8 @@ class MainDashboard : AppCompatActivity(), NavigationView.OnNavigationItemSelect
         loadUserProfile()
 
         // The NavigationView is commented out in your XML, but this code is ready for it.
-        val navigationView: NavigationView? = findViewById(R.id.nav_view)
-        navigationView?.setNavigationItemSelectedListener(this)
+//        val navigationView: NavigationView? = findViewById(R.id.nav_view)
+//        navigationView?.setNavigationItemSelectedListener(this)
     }
 
     private fun loadUserProfile() {

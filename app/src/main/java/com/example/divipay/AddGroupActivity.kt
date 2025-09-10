@@ -18,6 +18,7 @@ import com.google.android.material.textfield.TextInputLayout
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
+
 class AddGroupActivity : AppCompatActivity() {
 
     private lateinit var etGroupName: EditText
@@ -176,6 +177,9 @@ class AddGroupActivity : AppCompatActivity() {
             intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
             startActivity(intent)
         }
+
+
+
     }
 
     override fun onSupportNavigateUp(): Boolean {

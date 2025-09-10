@@ -89,7 +89,11 @@ class ProfileSetupActivity : AppCompatActivity() {
                 // Clear the form for the next member
                 clearForm()
             } else {
-                Toast.makeText(this, "Please select an avatar and enter a name and email.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    "Please select an avatar and enter a name and email.",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
 
@@ -160,41 +164,65 @@ class ProfileSetupActivity : AppCompatActivity() {
     }
 
     private fun setupBottomBarListeners() {
-        // Your bottom bar listeners are correct and do not need changes
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
-        return true
-    }
-}
-
-// RecyclerView Adapter for members
-class MembersAdapter(
-    var membersList: ArrayList<Member>,
-    private val onMemberDeleted: (Member) -> Unit
-) : RecyclerView.Adapter<MembersAdapter.MemberViewHolder>() {
-
-    class MemberViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val memberName: TextView = view.findViewById(R.id.tvMemberName)
-        val memberAvatar: CircleImageView = view.findViewById(R.id.ivMemberAvatar)
-        val deleteButton: ImageButton = view.findViewById(R.id.btnDeleteMember)
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MemberViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_member, parent, false)
-        return MemberViewHolder(view)
-    }
-
-    override fun onBindViewHolder(holder: MemberViewHolder, position: Int) {
-        val member = membersList[position]
-        holder.memberName.text = member.name
-        holder.memberAvatar.setImageResource(member.avatarResId)
-
-        holder.deleteButton.setOnClickListener {
-            onMemberDeleted(member)
+        findViewById<ImageButton>(R.id.icon_home).setOnClickListener {
+            val intent = Intent(this, MainDashboard::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
+            startActivity(intent)
         }
+        findViewById<ImageButton>(R.id.icon_groups).setOnClickListener {
+            val intent = Intent(this, AddGroupActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
+            startActivity(intent)
+        }
+        findViewById<ImageButton>(R.id.icon_add_user).setOnClickListener {
+            Toast.makeText(this, "You are already on the Profile Setup page!", Toast.LENGTH_SHORT)
+                .show()
+        }
+        findViewById<ImageButton>(R.id.icon_list).setOnClickListener {
+            val intent = Intent(this, ExpenseListActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
+            startActivity(intent)
+        }
+        findViewById<ImageButton>(R.id.icon_chart).setOnClickListener {
+            val intent = Intent(this, AnalysisActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
+            startActivity(intent)
+        }
+
+//    override fun onSupportNavigateUp(): Boolean {
+//        onBackPressed()
+//        return true
+//    }
     }
 
-    override fun getItemCount() = membersList.size
+    // RecyclerView Adapter for members
+    class MembersAdapter(
+        var membersList: ArrayList<Member>,
+        private val onMemberDeleted: (Member) -> Unit
+    ) : RecyclerView.Adapter<MembersAdapter.MemberViewHolder>() {
+
+        class MemberViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+            val memberName: TextView = view.findViewById(R.id.tvMemberName)
+            val memberAvatar: CircleImageView = view.findViewById(R.id.ivMemberAvatar)
+            val deleteButton: ImageButton = view.findViewById(R.id.btnDeleteMember)
+        }
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MemberViewHolder {
+            val view =
+                LayoutInflater.from(parent.context).inflate(R.layout.item_member, parent, false)
+            return MemberViewHolder(view)
+        }
+
+        override fun onBindViewHolder(holder: MemberViewHolder, position: Int) {
+            val member = membersList[position]
+            holder.memberName.text = member.name
+            holder.memberAvatar.setImageResource(member.avatarResId)
+
+            holder.deleteButton.setOnClickListener {
+                onMemberDeleted(member)
+            }
+        }
+
+        override fun getItemCount() = membersList.size
+    }
 }

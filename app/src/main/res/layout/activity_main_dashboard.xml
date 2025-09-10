@@ -13,7 +13,8 @@
     <RelativeLayout
         android:id="@+id/main_content_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#F0F0F0">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -420,15 +421,15 @@
         </ScrollView>
     </RelativeLayout>
 
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        app:headerLayout="@layout/drawer_header"
-        app:menu="@menu/drawer_menu"
-        app:itemIconTint="@color/drawer_text_color"
-        app:itemTextColor="@color/drawer_icon_tint"
-        app:itemBackground="@drawable/menu_item_background_selector" />
+<!--    <com.google.android.material.navigation.NavigationView-->
+<!--        android:id="@+id/nav_view"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_gravity="start"-->
+<!--        app:headerLayout="@layout/drawer_header"-->
+<!--        app:menu="@menu/drawer_menu"-->
+<!--        app:itemIconTint="@color/drawer_text_color"-->
+<!--        app:itemTextColor="@color/drawer_icon_tint"-->
+<!--        app:itemBackground="@drawable/menu_item_background_selector" />-->
 
 </androidx.drawerlayout.widget.DrawerLayout>

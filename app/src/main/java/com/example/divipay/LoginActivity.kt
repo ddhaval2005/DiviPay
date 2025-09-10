@@ -43,14 +43,17 @@ class LoginActivity : AppCompatActivity() {
             val password = passwordEditText.text.toString()
 
             // Check if credentials are valid (using SharedPreferences for local storage)
-            if (isCredentialsValid(username, password)) {
-                Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show()
-                val i = Intent(this, MainDashboard::class.java)
-                startActivity(i)
-                finish()
-            } else {
-                Toast.makeText(this, "Invalid username or password", Toast.LENGTH_SHORT).show()
-            }
+//            if (isCredentialsValid(username, password)) {
+//                Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show()
+//                val i = Intent(this, MainDashboard::class.java)
+//                startActivity(i)
+//                finish()
+//            } else {
+//                Toast.makeText(this, "Invalid username or password", Toast.LENGTH_SHORT).show()
+//            }
+            val i = Intent(this, MainDashboard::class.java)
+            startActivity(i)
+            finish()
         }
 
         // Set click listener for the "Register here" text

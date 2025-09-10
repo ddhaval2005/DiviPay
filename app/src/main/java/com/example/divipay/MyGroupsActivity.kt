@@ -140,11 +140,11 @@ class GroupsAdapter(private val groups: ArrayList<Group>) : RecyclerView.Adapter
         holder.memberCount.text = "Members: ${group.memberCount}"
         holder.totalAmount.text = "Amount: ₹${"%.2f".format(group.totalAmount)}"
 
-        holder.itemView.setOnClickListener {
-            val intent = Intent(holder.itemView.context, AddExpenseActivity::class.java)
-            intent.putStringArrayListExtra("membersList", group.memberNames)
-            holder.itemView.context.startActivity(intent)
-        }
+//        holder.itemView.setOnClickListener {
+//            val intent = Intent(holder.itemView.context, AddExpenseActivity::class.java)
+//            intent.putStringArrayListExtra("membersList", group.memberNames)
+//            holder.itemView.context.startActivity(intent)
+//        }
     }
 
     override fun getItemCount() = groups.size

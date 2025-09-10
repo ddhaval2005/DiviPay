@@ -6,12 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    tools:context=".AddMemberActivity">
+    tools:context=".ProfileSetupActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="100dp"
         android:background="@drawable/blue_gradient_background"
         android:elevation="4dp"
         app:navigationIcon="@drawable/ic_arrow_back"
@@ -158,10 +158,81 @@
         </LinearLayout>
     </ScrollView>
 
-    <include layout="@layout/bottom_bar_layout"
+    <LinearLayout
         android:id="@+id/bottom_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        android:layout_marginBottom="0dp"
+        android:background="@drawable/blue_gradient_background"
+        android:elevation="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:weightSum="5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/icon_home"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:contentDescription="Home"
+            android:focusable="true"
+            android:src="@drawable/home"
+            app:tint="@color/drawer_divider" />
+
+        <ImageButton
+            android:id="@+id/icon_groups"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:contentDescription="Groups"
+            android:focusable="true"
+            android:src="@drawable/groups"
+            app:tint="@android:color/white" />
+
+        <ImageButton
+            android:id="@+id/icon_add_user"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:contentDescription="Add User"
+            android:focusable="true"
+            android:src="@drawable/user"
+            app:tint="@color/drawer_icon_tint" />
+
+        <ImageButton
+            android:id="@+id/icon_list"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:contentDescription="List"
+            android:focusable="true"
+            android:src="@drawable/list"
+            app:tint="@color/drawer_divider" />
+
+        <ImageButton
+            android:id="@+id/icon_chart"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:contentDescription="Chart"
+            android:focusable="true"
+            android:src="@drawable/chart"
+            app:tint="@android:color/white" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
