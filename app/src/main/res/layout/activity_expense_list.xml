@@ -30,7 +30,7 @@
             android:textStyle="bold" />
 
     </androidx.appcompat.widget.Toolbar>
-
+<!--//sfwfwfwf-->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvExpenses"
         android:layout_width="0dp"
